@@ -1,0 +1,179 @@
+  <!-- Date of creation: 24-03-2020
+    Updates: 
+    (1)30-09-2020
+    Improvements:
+        * Broken image link(s) fixed by default image.
+        * JavaScript is minimized (using Google Closure Compiler[https://closure-compiler.appspot.com]) to reduce the loading time.
+        * CSS and JS in other tabs are included internally.
+        * UI improvement.
+        * Converted array of members data to JSON and stored it in api to update whenever the new member joins to AIMU, without editing this code.
+    (2)1-10-2020
+        * Bug fix.
+        Check out my comment in comments section, In case you want to see old version of this.
+   -->
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <title>AIMU - FAQ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+    <!-- Bootstrap.css -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- Required scripts -->
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+      integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+      crossorigin="anonymous"></script>
+    <!-- Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"></script>
+    <!-- Bootstrap.js -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <!-- Mark.js -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js"></script>
+    <!-- My css -->
+    <style>
+    Html{scroll-behavior:smooth}mark{background:#ff0}.text-sans{font-family:'Open Sans',sans-serif}.title{display:flex;align-items:center;justify-content:center;color:#fff;user-select:none;-moz-user-select:none;-webkit-user-select:none;-ms-user-select:none;font-size:800%;height:300px;width:100%;background-color:#000}.avatar{height:300px}
+    </style>
+    <!-- My js -->
+    <script type="text/javascript">
+      var $jscomp=$jscomp||{};$jscomp.scope={};$jscomp.createTemplateTagFirstArg=function(c){return c.raw=c};$jscomp.createTemplateTagFirstArgWithRaw=function(c,d){c.raw=d;return c};$jscomp.arrayIteratorImpl=function(c){var d=0;return function(){return d<c.length?{done:!1,value:c[d++]}:{done:!0}}};$jscomp.arrayIterator=function(c){return{next:$jscomp.arrayIteratorImpl(c)}};$jscomp.makeIterator=function(c){var d="undefined"!=typeof Symbol&&Symbol.iterator&&c[Symbol.iterator];return d?d.call(c):$jscomp.arrayIterator(c)};
+(function(c,d,h){var g=d.createElement("div");g.setAttribute("class","card");var a=d.createElement("div");fetch(h).then(function(b){return b.json()}).then(function(b){b.members.sort(function(e,f){return e.name.toUpperCase()<f.name.toUpperCase()?-1:e.name.toUpperCase()>f.name.toUpperCase()?1:0});buildCards(b.leaders,a,b.defaultImg);buildCards(b.members,g,b.defaultImg)})["catch"](function(b){return console.log(b)});c.addEventListener("DOMContentLoaded",function(){d.getElementById("Leaders").appendChild(a);
+d.getElementById("Members").appendChild(g);d.getElementById("search").addEventListener("click",function(b){b.preventDefault();(new Mark(d.getElementById("content"))).mark(d.getElementById("find").value)})})})(window,document,"https://raw.githubusercontent.com/silent-killer-27/AIMU/master/members.json");function setAttributes(c,d){for(var h in d)try{c.setAttribute(h,d[h])}catch(g){console.log("Oops, error occured: "+g.message)}}
+function buildCards(c,d,h){var g=document.createElement("div"),a={};c=$jscomp.makeIterator(c);for(var b=c.next();!b.done;a={$jscomp$loop$prop$img$2:a.$jscomp$loop$prop$img$2,$jscomp$loop$prop$member$3:a.$jscomp$loop$prop$member$3},b=c.next()){a.$jscomp$loop$prop$member$3=b.value;a.$jscomp$loop$prop$member$3.hasOwnProperty("role")&&"object"==typeof a.$jscomp$loop$prop$member$3.role&&(b=document.createElement("h1"),g.setAttribute("class","card"),setAttributes(b,{"class":"card card-header bg-light text-center "+
+("Creator"===a.$jscomp$loop$prop$member$3.role[0]?"text-primary":"Leader"===a.$jscomp$loop$prop$member$3.role[0]?"text-warning":"text-info"),id:""+("Mistri"===a.$jscomp$loop$prop$member$3.role[0]?a.$jscomp$loop$prop$member$3.role[1]:a.$jscomp$loop$prop$member$3.role[0])}),b.textContent="Mistri"===a.$jscomp$loop$prop$member$3.role[0]?a.$jscomp$loop$prop$member$3.role[1]:a.$jscomp$loop$prop$member$3.role[0],g.appendChild(b));a.$jscomp$loop$prop$img$2=new Image;a.$jscomp$loop$prop$img$2.src="https://api.sololearn.com/Uploads/Avatars/"+
+a.$jscomp$loop$prop$member$3.id+".jpg";a.$jscomp$loop$prop$img$2.addEventListener("error",function(k){return function(){k.$jscomp$loop$prop$img$2.src=h;console.clear()}}(a));"Sudarshan Rai"===a.$jscomp$loop$prop$member$3.name&&a.$jscomp$loop$prop$img$2.setAttribute("id","Sudarshan");setAttributes(a.$jscomp$loop$prop$img$2,{"class":"card-top-img "+(a.$jscomp$loop$prop$member$3.hasOwnProperty("role")&&"object"===a.$jscomp$loop$prop$member$3.role?"Creator"==a.$jscomp$loop$prop$member$3.role[0]?"bg-primary":
+"Leader"==a.$jscomp$loop$prop$member$3.role[0]?"bg-warning":"bg-info":"bg-primary")+" avatar"});a.$jscomp$loop$prop$member$3.hasOwnProperty("role")&&"object"==typeof a.$jscomp$loop$prop$member$3.role?g.appendChild(a.$jscomp$loop$prop$img$2):d.appendChild(a.$jscomp$loop$prop$img$2);b=document.createElement("div");b.setAttribute("class","mb-4 cover-text text-center");var e=document.createElement("h6");e.setAttribute("class","text-dark");e.textContent=a.$jscomp$loop$prop$member$3.name+" ";if(!a.$jscomp$loop$prop$member$3.hasOwnProperty("role")||
+a.$jscomp$loop$prop$member$3.hasOwnProperty("role")&&"string"===typeof a.$jscomp$loop$prop$member$3.role){var f=document.createElement("span");f.setAttribute("class","badge badge-success");f.textContent=""+(a.$jscomp$loop$prop$member$3.hasOwnProperty("role")?a.$jscomp$loop$prop$member$3.role:"Mistri");e.appendChild(f)}else f=document.createElement("span"),f.setAttribute("class","mr-1 badge "+("Creator"===a.$jscomp$loop$prop$member$3.role[0]?"badge-primary":"Leader"===a.$jscomp$loop$prop$member$3.role[0]?
+"badge-warning":"badge-success")),f.textContent=a.$jscomp$loop$prop$member$3.role[0],e.appendChild(f),f=document.createElement("span"),f.setAttribute("class","badge badge-dark"),f.textContent=a.$jscomp$loop$prop$member$3.role[1],e.appendChild(f);a.$jscomp$loop$prop$member$3.hasOwnProperty("info")&&(e.innerHTML+="<br><pre>"+a.$jscomp$loop$prop$member$3.info+"</pre>");b.appendChild(e);e=document.createElement("button");setAttributes(e,{"class":"btn btn-outline-primary",type:"button"});e.textContent=
+"Visit profile";e.addEventListener("click",function(k){return function(){window.open("https://www.sololearn.com/Profile/"+k.$jscomp$loop$prop$member$3.id)}}(a));b.appendChild(e);a.$jscomp$loop$prop$member$3.hasOwnProperty("role")&&"object"==typeof a.$jscomp$loop$prop$member$3.role?(g.appendChild(b),d.appendChild(g)):d.appendChild(b)}};
+    </script>
+   </head>
+  <body>
+    <!-- Navigation  -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark text">
+      <h5 class="text-light">Team AIMU</h5>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#Options" aria-controls="Options"
+        aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="Options">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item text">
+            <span class="nav-link disabled nav-primary" tabindex="-1" aria-disabled="true">Want to search a
+            keyword?</span>
+          </li>
+        </ul>
+        <!-- Word highlighting feature  -->
+        <form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" type="search" placeholder="Start typing here... (ex: Leader)"
+            aria-label="Search" id="find" href="#">
+          <button class="btn btn-outline-info" type="submit" id="search">Search</button>
+        </form>
+        <!-- End of search bar -->
+        <!-- Navigation options  -->
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="#home">FAQ</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#Creator">Creator</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#Leader">Leader</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#Chota Thekkedar">Chota Thekkedar</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#Members">Members</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#rules">Rules</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <!-- End of nav options -->
+    <!-- AIMU in text  -->
+    <div class="title">AIMU</div>
+    <!-- Frequently Asked Questions with answer  -->
+    <div id="home" class="text-center container">
+      <h1> What is AIMU? </h1>
+      <p class="text-sans">
+        All India Mistri Union ( shortly called AIMU ) is a chatting group on SoloLearn and it was created by <a
+          class="text-dark" href="#Creator"><u>Sudeep Jaiswal</u></a> on May 2019. It was created with less than 10
+        but now, It has more than 20 members. Members of this group enjoys coding in various programming or
+        non-programming languages. We ( AIMU members ) always ready for any challenges in either web or non-web code.
+        Win or loss we never give up!
+      </p>
+      <h1 class="center-text">What does Jai AIMU mean?</h1>
+      <p class="text-sans">
+        You may have seen comments with #JaiAIMU tag by some of AIMU members, but you may don't know the meaning. Well,
+        It is just a phrase used to express support for AIMU team. AIMU members often use this phrase in thier comment
+        on any code to express the support to the author of code and the group.
+      </p>
+      <h1 class="text-center">What does Bawa / Mistri / Mistrani mean?</h1>
+      <p class="text-sans">According to <u><a class="text-dark" href="#Leader">Tanay Bhatt,</a></u> Bawa means brother, Mistri/Mistrani
+        refers to bro/sis.
+      </p>
+      <h1 class="text-center">Can I join AIMU?</h1>
+      <p class="text-sans">If we trust you, you will be added into the group.</p>
+    </div>
+    <!-- Members/Leader/Creator of AIMU  -->
+    <h1 class="alert alert-info text-center text-dark">Meet the team!</h1>
+    <div id="Leaders"></div>
+    <h1 class="card-header bg-light text-center text-success" id="Members">Members</h1>
+    <div class="text-center text-dark">
+      <h6>Reference:</h6>
+      <a href="https://code.sololearn.com/W5gFPXPTF6OW" target="_blank">Team AIMU </a>- By <u><a class="text-dark"
+        href="#Creator">Sudeep Jaiswal</a></u>
+      <br />
+      <span class="text text-dark">& AIMU group(Official) on <a href="https://sololearn.com" target="_blank">SoloLearn</a>.</span>
+    </div>
+    <div id="rules" class="alert alert-primary">
+      <h1>Rules listed on AIMU discord server</h1>
+      <br>
+      <pre>1) Be respectful - Show respect to other members and staff of this server, be kind when going about certain things and conversations
+               
+2) Sending/Linking any harmful material such as viruses, IP grabbers or harmware results in an immediate and permanent ban.
+               
+3) Use proper grammar and spelling and don't spam & usethe correct channels
+- for example #memes for memes, #bots for bot commands etc.
+               
+4) Usage of excessive extreme innapropriate langauge is prohibited.
+               
+5) mentioning @_everyone, the Moderators or a specific person without proper reason is prohibited.
+               
+6) Act civil in Voice Chat.
+               
+7) Post content in the correct channels.
+               
+8) Don't post someone's personal information without permission.
+               
+9) Listen to what Staff says.
+               
+10) Do not post graphic pictures of minors (<18yo).
+               
+11) No advertising - Don’t dm advertise any server links or post them in any of the server channels and don’t advertise and post any of your social media accounts
+               
+12) No spamming
+- Don’t send any kind of spam meaning don’t mass ping members, staff, and owner, don’t send multiple messages at once, and don’t use multiple emojis etc.
+               
+There may be situations not covered by the rules or times where the rule may not fit the situation.If this happens the moderators are trusted to handle the situation appropriately.If you have a complaint about a  member / moderators, you may submit your query to Moderators
+               
+You will either be warned, muted, and/or banned if you break any of these rules .
+#AIMU Moderators
+                <h6>-By <u><a class="text-dark" href="#Sudarshan">Sudarshan Rai</a></u>(Admin of AIMU server)</h6></pre>
+    </div>
+    <div class="alert alert-success" role="alert">
+      <h6 style="font-size:95%"><b>Still, can't find answer for your questions related to AIMU group?</b><br>Let us know
+        in the comment section and we will try to answer. :)
+      </h6>
+    </div>
+    <footer class="bg-dark text-center" style="color:#FFF">
+      &copy;2020 Created by :
+      <a href="https://www.sololearn.com/Profile/15771326" class="text-primary" style="color:#FFF"> Vinay_GB </a>
+    </footer>
+  </body>
+</html>  
